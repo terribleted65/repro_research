@@ -1,9 +1,3 @@
----
-title: "PA1_template.Rmd"
-author: "terribleted65"
-date: "Wednesday, October 15, 2014"
-output: html_document
----
 Analyze, graph, and report on the activity of an anonymous individual using 2 months 
 of data gathered from their personal activity monitoring device (e.g. fitbit).
 

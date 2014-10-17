@@ -58,22 +58,3 @@ averages <- aggregate(steps ~ interval + day, data = activity_w_values, mean)
 ggplot(averages, aes(interval, steps)) + geom_line() + facet_grid(day ~ .) + 
     xlab("5-minute interval") + ylab("Number of steps")
 #
-#
-#
-## testing code
-#
-#daily_steps$t_steps[is.na(daily_steps$t_steps)] <- 0
-# remove NA data
-#good_activity <- activity_all[complete.cases(activity_all),]
-#daily_steps$t_steps[is.na(daily_steps$t_steps)] <- 0
-# calc total steps per day
-#daily_steps <- aggregate(activity_all, by=list(activity_all$date,activity_all$steps), FUN=sum, na.rm=TRUE)
-# set date column format
-#activity_all$date <- as.Date(activity_all$date,"%Y-%m-%d")
-
-library(ggplot2)
-qplot(t_steps, data=daily_steps, geom="histogram")
-
-
-hist(v,main="Number of Daily Steps", 
-     xlab="Steps", ylab="Frequency", col="Red")
