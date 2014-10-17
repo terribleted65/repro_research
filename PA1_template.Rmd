@@ -13,26 +13,26 @@ daily_steps <- ddply(activity_all, .(date), summarize, t_steps=sum(steps,na.rm=T
 ```
 
 The total number of steps taken each day while ignoring missing data.
-```{r, echo=FALSE}
+```{r}
 # print histogram of steps taken per day
 hist(daily_steps$t_steps, main="Number of Daily Steps", xlab="Steps Taken", 
      ylab="Frequency", col="green", breaks=30, xlim=c(0,25000), ylim=c(0,12))
 ```
 
 The mean number of steps per day:
-```{r,echo=FALSE}
+```{r}
 mean(daily_steps$t_steps)
 ```
 
 The median number of steps per day:
-```{r,echo=FALSE}
+```{r}
 median(daily_steps$t_steps)
 ```
 
 Average number of steps taken across all days within a 5 minute interval while 
 ignoring missing values:
 
-```{r,echo=FALSE}
+```{r}
 #calc average # of steps per interval across days
 avg_steps_interval <- aggregate(activity_all$steps, by=list(activity_all$interval),
     FUN=mean, na.rm=TRUE)
@@ -46,7 +46,7 @@ qplot(interval,avg_steps, data=avg_steps_interval,geom="line",xlab="5 Minute Int
 
 What time 5-minute time interval, on average, contains the maximum number of steps?
 
-```{r,echo=FALSE}
+```{r}
 #find time interval has the max avg number of steps
 max_avg_steps_row <- which.max(avg_steps_interval$avg_steps)
 avg_steps_interval[max_avg_steps_row,1]
@@ -68,7 +68,7 @@ for (n in 1:NROW(activity_w_values)){
 
 Total number of steps taken each days using imputed values:
 
-```{r,echo=FALSE}
+```{r}
 # calculate daily steps with imputed values included
 daily_steps_imp <- ddply(activity_w_values, .(date), summarize, t_steps=sum(steps))
 # print histogram of steps taken per day with values imputed
@@ -79,7 +79,7 @@ hist(daily_steps_imp$t_steps, main="Number of Daily Steps", xlab="Steps Taken",
 Compare the average number of steps taken per 5-minute interval across weekdays
 and weekends:
 
-```{r,echo=FALSE}
+```{r}
 activity_w_values$day <- weekdays(as.Date(activity_w_values$date))
 # determine weekday or weekend
 activity_w_values$day <- ifelse ((activity_w_values$day== "Saturday" | activity_w_values$day== "Sunday"), "Weekend", "Weekday")
