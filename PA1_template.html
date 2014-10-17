@@ -290,10 +290,10 @@ and weekends:</p>
 <pre><code class="r">activity_w_values$day &lt;- weekdays(as.Date(activity_w_values$date))
 # determine weekday or weekend
 activity_w_values$day &lt;- ifelse ((activity_w_values$day== &quot;Saturday&quot; | activity_w_values$day== &quot;Sunday&quot;), &quot;Weekend&quot;, &quot;Weekday&quot;)
-# average steps by day#####################
-averages &lt;- aggregate(steps ~ interval + day, data = activity_w_values, mean)
+# average steps by day
+average_int_steps &lt;- aggregate(steps ~ interval + day, data = activity_w_values, mean)
 # plot 
-ggplot(averages, aes(interval, steps)) + geom_line() + facet_grid(day ~ .) + 
+ggplot(average_int_steps, aes(interval, steps)) + geom_line() + facet_grid(day ~ .) + 
     xlab(&quot;5-minute interval&quot;) + ylab(&quot;Number of steps&quot;)
 </code></pre>
 

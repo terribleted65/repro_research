@@ -53,8 +53,8 @@ activity_w_values$day <- weekdays(as.Date(activity_w_values$date))
 # determine weekday or weekend
 activity_w_values$day <- ifelse ((activity_w_values$day== "Saturday" | activity_w_values$day== "Sunday"), "Weekend", "Weekday")
 # average steps by day#####################
-averages <- aggregate(steps ~ interval + day, data = activity_w_values, mean)
+average_int_steps <- aggregate(steps ~ interval + day, data = activity_w_values, mean)
 # plot 
-ggplot(averages, aes(interval, steps)) + geom_line() + facet_grid(day ~ .) + 
+ggplot(average_int_steps, aes(interval, steps)) + geom_line() + facet_grid(day ~ .) + 
     xlab("5-minute interval") + ylab("Number of steps")
 #
